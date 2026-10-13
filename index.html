@@ -1,0 +1,404 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Swelly.pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --abyss:#04090F;
+  --deep:#0A1424;
+  --panel:#0D1B2E;
+  --line:rgba(150,200,220,.14);
+  --line-strong:rgba(150,200,220,.28);
+  --tide:#2DE2C4;
+  --tide-dim:rgba(45,226,196,.14);
+  --sand:#E9C98B;
+  --ink:#E7EFF6;
+  --mute:#8496AB;
+  --serif:"Unbounded","Arial Black",system-ui,sans-serif;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:var(--abyss);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--tide);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.045em}
+h2{font-size:clamp(1.7rem,4vw,3rem)}
+em{font-style:normal;color:var(--tide);font-weight:400;text-shadow:0 0 28px rgba(45,226,196,.45)}
+
+/* NAV */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(4,9,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--serif);font-size:1.15rem;font-weight:500;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}
+.logo svg{width:26px;height:26px}
+.logo b{color:var(--tide);font-weight:500}
+.links{display:flex;gap:28px;font-size:14px;color:var(--mute)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--line-strong);transition:transform .2s,background .2s,border-color .2s,box-shadow .2s;cursor:pointer;font-family:var(--sans);color:var(--ink);background:transparent}
+.btn:hover{border-color:var(--tide);transform:translateY(-1px)}
+.btn.primary{background:var(--tide);color:#03211C;border-color:var(--tide);box-shadow:0 0 0 0 rgba(45,226,196,.5)}
+.btn.primary:hover{box-shadow:0 8px 40px -6px rgba(45,226,196,.55)}
+.btn svg{width:16px;height:16px}
+nav .btn{padding:9px 18px;font-size:14px}
+
+/* HERO */
+.hero{position:relative;padding-block:clamp(56px,9vw,120px) clamp(48px,7vw,90px);overflow:hidden;border-bottom:1px solid var(--line)}
+#swell{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 25% 35%,rgba(4,9,15,.86),rgba(4,9,15,0) 75%);z-index:1;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(4,9,15,.55);margin-bottom:28px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--tide);box-shadow:0 0 12px var(--tide);animation:pulse 2.2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-size:clamp(2.1rem,6.4vw,5.4rem);max-width:15ch;font-weight:500;line-height:1.04}
+.lede{max-width:52ch;color:#B5C4D4;font-size:clamp(1.02rem,1.6vw,1.2rem);margin:28px 0 36px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:64px;padding-top:22px;border-top:1px solid var(--line)}
+.hero-meta div{display:flex;flex-direction:column;gap:2px}
+.hero-meta strong{font-family:var(--serif);font-weight:400;font-size:1.05rem;letter-spacing:-.03em}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);background:var(--deep);padding-block:16px}
+.track{display:flex;gap:48px;width:max-content;animation:slide 38s linear infinite;font-family:var(--serif);font-weight:300;font-size:1.1rem;letter-spacing:-.03em;color:var(--mute);white-space:nowrap}
+.track span:nth-child(even){color:var(--sand)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding-block:clamp(64px,9vw,120px)}
+.head{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:48px;max-width:760px}
+
+/* SERVICES */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--line);gap:1px}
+.svc article{background:var(--abyss);padding:32px 28px 30px;display:flex;flex-direction:column;gap:14px;transition:background .3s;position:relative}
+.svc article:hover{background:var(--deep)}
+.svc article::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--tide);transition:width .5s}
+.svc article:hover::before{width:100%}
+.svc h3{font-size:1.3rem;font-weight:400}
+.svc p{margin:0;color:var(--mute);font-size:15px;max-width:44ch}
+.svc ul{list-style:none;padding:0;margin:auto 0 0;display:flex;flex-wrap:wrap;gap:8px;padding-top:10px}
+.svc li{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 10px;border:1px solid var(--line);border-radius:6px;color:#A9BACB}
+
+/* PROCESS */
+.process{background:var(--deep);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.step{padding:28px 24px 8px 0;position:relative;border-top:1px solid var(--line-strong)}
+.step::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--tide);box-shadow:0 0 14px var(--tide)}
+.step .mono{color:var(--sand)}
+.step h3{font-size:1.12rem;font-weight:400;margin:10px 0 10px}
+.step p{margin:0;color:var(--mute);font-size:15px}
+
+/* STACK / PROMISES */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.checks li:first-child{border-top:1px solid var(--line)}
+.checks svg{width:22px;height:22px;color:var(--tide);margin-top:3px}
+.checks strong{display:block;font-weight:600}
+.checks span{color:var(--mute);font-size:15px}
+.term{background:#060E19;border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;font-family:var(--mono);font-size:13px;box-shadow:0 30px 80px -30px rgba(45,226,196,.18)}
+.term-bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--deep)}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#1E3148}
+.term-bar span{margin-left:auto;font-size:11px;color:var(--mute)}
+.term pre{margin:0;padding:22px 20px;overflow-x:auto;line-height:1.85;color:#9FB2C6}
+.term .k{color:var(--tide)}.term .s{color:var(--sand)}.term .c{color:#4E6379}
+
+/* CONTACT */
+.contact{background:linear-gradient(180deg,var(--abyss),var(--deep));border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px}
+.contact h2{margin-bottom:24px}
+.contact .info{display:grid;gap:18px;margin-top:36px}
+.contact .info div{display:flex;flex-direction:column;gap:2px}
+form{display:grid;gap:16px;background:var(--panel);border:1px solid var(--line-strong);border-radius:20px;padding:28px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:8px}
+label span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+input,select,textarea{width:100%;background:var(--abyss);border:1px solid var(--line-strong);border-radius:10px;padding:13px 14px;color:var(--ink);font:inherit;font-size:15px}
+input::placeholder,textarea::placeholder{color:#4E6379}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--tide);box-shadow:0 0 0 3px var(--tide-dim)}
+textarea{min-height:120px;resize:vertical}
+form .btn{justify-content:center;width:100%}
+.note{font-size:13px;color:var(--mute);margin:0;text-align:center}
+
+/* FAQ */
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:var(--serif);font-size:1.05rem;font-weight:400;letter-spacing:-.03em;line-height:1.3}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--tide);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mute);margin:14px 0 0;max-width:62ch}
+
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:920px){
+  .links{display:none}
+  .svc{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+  .split,.contact-grid{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  form{padding:20px}
+  .hero-meta{gap:20px 32px;margin-top:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none}.status i{animation:none}html{scroll-behavior:auto}
+}
+</style>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Swelly.pro, accueil">
+      <svg viewBox="0 0 32 32" fill="none" stroke="#2DE2C4" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 20c4-8 8-8 12 0s8 8 16-2"/><path d="M2 12c4-6 8-6 12 0s8 6 16-1" opacity=".45"/></svg>
+      Swelly<b>.pro</b>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#methode">Méthode</a>
+      <a href="#promesse">Engagements</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <a class="btn primary" href="#contact">Demander un devis</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="swell" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="status mono"><i></i>Studio indépendant · Annecy · Prend de nouveaux projets</div>
+    <h1>Des sites qui font <em>venir</em> les clients.</h1>
+    <p class="lede">Swelly conçoit et développe des sites web sur-mesure pour les sociétés qui se lancent : rapides, soignés, pensés pour transformer un visiteur en demande de devis. Du code écrit à la main, pas un thème recyclé.</p>
+    <div class="cta">
+      <a class="btn primary" href="#contact">Démarrer mon projet
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a class="btn" href="#services">Voir ce qu'on fait</a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>&lt; 24 h</strong><span class="mono">Réponse à chaque demande</span></div>
+      <div><strong>7 jours</strong><span class="mono">De l'appel à la mise en ligne</span></div>
+      <div><strong>45.899° N, 6.129° E</strong><span class="mono">Annecy, Haute-Savoie</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Site vitrine</span><span>Application web</span><span>Base de données</span><span>Automatisation IA</span><span>Réservation en ligne</span><span>E-commerce</span><span>SEO local</span><span>Espace client</span>
+    <span>Site vitrine</span><span>Application web</span><span>Base de données</span><span>Automatisation IA</span><span>Réservation en ligne</span><span>E-commerce</span><span>SEO local</span><span>Espace client</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono">Services</span>
+      <h2>Tout ce qu'il faut pour <em>lancer</em> votre présence en ligne.</h2>
+    </div>
+    <div class="svc">
+      <article>
+        <span class="mono">Pour se faire connaître</span>
+        <h3>Site vitrine premium</h3>
+        <p>Une image forte dès la première seconde, des pages qui chargent instantanément et un parcours qui mène droit au bouton « Contact ».</p>
+        <ul><li>Design sur-mesure</li><li>Mobile first</li><li>SEO de base</li></ul>
+      </article>
+      <article>
+        <span class="mono">Pour vendre</span>
+        <h3>Boutique &amp; réservation</h3>
+        <p>Catalogue, paiement en ligne, réservation de créneaux ou de prestations : vos clients commandent sans vous appeler.</p>
+        <ul><li>Paiement sécurisé</li><li>Calendrier</li><li>Emails automatiques</li></ul>
+      </article>
+      <article>
+        <span class="mono">Pour s'organiser</span>
+        <h3>Application web &amp; base de données</h3>
+        <p>Espace client, back-office, tableau de bord : l'outil interne qui remplace vos tableurs et vos allers-retours par mail.</p>
+        <ul><li>Comptes &amp; rôles</li><li>API</li><li>Tableaux de bord</li></ul>
+      </article>
+      <article>
+        <span class="mono">Pour gagner du temps</span>
+        <h3>Automatisation &amp; IA</h3>
+        <p>Réponses aux demandes, tri des devis, génération de contenu : l'IA branchée sur votre activité, là où elle fait vraiment gagner des heures.</p>
+        <ul><li>Assistants sur-mesure</li><li>Automatisations</li><li>Intégrations</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="methode">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono">Méthode</span>
+      <h2>Quatre étapes, <em>zéro</em> surprise.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="mono">Jour 1</span><h3>Appel de cadrage</h3><p>20 minutes pour comprendre votre activité, vos clients et ce que le site doit rapporter.</p></div>
+      <div class="step"><span class="mono">Jours 2 à 3</span><h3>Maquette</h3><p>Vous voyez le design avant qu'on écrive une ligne de code, et vous ajustez.</p></div>
+      <div class="step"><span class="mono">Jours 4 à 6</span><h3>Développement</h3><p>Le site prend vie : animations, formulaires, performances, tests sur mobile.</p></div>
+      <div class="step"><span class="mono">Jour 7</span><h3>Mise en ligne</h3><p>Nom de domaine, hébergement, suivi. Vous repartez avec un site que vous maîtrisez.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="promesse">
+  <div class="wrap split">
+    <div>
+      <div class="head" style="margin-bottom:28px">
+        <span class="mono">Engagements</span>
+        <h2>Un vrai <em>développeur</em>, pas un constructeur de pages.</h2>
+      </div>
+      <ul class="checks">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <div><strong>Un interlocuteur unique</strong><span>Vous parlez à la personne qui conçoit et code votre site. Pas d'intermédiaire.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <div><strong>Un site rapide, propre, à vous</strong><span>Code sur-mesure, sans abonnement caché ni plugin qui ralentit tout.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <div><strong>Pensé pour convertir</strong><span>Chaque page a un objectif : un appel, un devis, une réservation.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+          <div><strong>Prix annoncé avant de commencer</strong><span>Un devis clair et daté. Ce qui est écrit est ce que vous payez.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="term" aria-label="Extrait de code">
+      <div class="term-bar"><i></i><i></i><i></i><span>swelly.config.js</span></div>
+<pre><span class="c">// Ce que chaque site Swelly embarque</span>
+<span class="k">export default</span> {
+  performance: <span class="s">"score Lighthouse visé : 95+"</span>,
+  responsive:  <span class="s">"mobile → desktop"</span>,
+  seo:         <span class="s">"balises, sitemap, local"</span>,
+  securite:    <span class="s">"HTTPS, RGPD"</span>,
+  contact:     <span class="s">"formulaire → votre boîte mail"</span>,
+  livraison:   <span class="s">"1 semaine, chrono"</span>,
+  propriete:   <span class="s">"le code vous appartient"</span>,
+};</pre>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="mono">Contact</span>
+      <h2 style="margin-top:14px">Parlons de <em>votre</em> lancement.</h2>
+      <p style="color:#B5C4D4;max-width:44ch;margin:0">Décrivez votre société en quelques lignes. Vous recevez une réponse et une première proposition sous 24 heures.</p>
+      <div class="info">
+        <div><span class="mono">Email</span><a href="mailto:contact@swelly.pro">contact@swelly.pro</a></div>
+        <div><span class="mono">Atelier</span><span>Annecy, Haute-Savoie</span></div>
+        <div><span class="mono">Disponibilité</span><span>Lundi au samedi</span></div>
+      </div>
+    </div>
+    <form id="lead" novalidate>
+      <div class="row">
+        <label for="nom"><span>Nom</span><input id="nom" name="nom" autocomplete="name" placeholder="Camille Durand" required></label>
+        <label for="mail"><span>Email</span><input id="mail" name="mail" type="email" autocomplete="email" placeholder="camille@societe.fr" required></label>
+      </div>
+      <div class="row">
+        <label for="type"><span>Besoin</span>
+          <select id="type" name="type">
+            <option>Site vitrine</option>
+            <option>Boutique / réservation en ligne</option>
+            <option>Application web</option>
+            <option>Automatisation / IA</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </label>
+        <label for="delai"><span>Délai souhaité</span>
+          <select id="delai" name="delai">
+            <option>Le plus vite possible</option>
+            <option>Sous 1 mois</option>
+            <option>Sous 3 mois</option>
+            <option>Pas de contrainte</option>
+          </select>
+        </label>
+      </div>
+      <label for="msg"><span>Votre projet</span><textarea id="msg" name="msg" placeholder="Notre activité, nos clients, ce que le site doit faire pour nous…"></textarea></label>
+      <button class="btn primary" type="submit">Envoyer ma demande
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+      <p class="note" id="note" role="status">Gratuit, sans engagement.</p>
+    </form>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="head"><span class="mono">Questions</span><h2>Ce qu'on nous demande <em>souvent</em>.</h2></div>
+    <details><summary>Combien coûte un site ?</summary><p>Cela dépend du besoin : un site vitrine n'a rien à voir avec une application. Après l'appel de cadrage, vous recevez un devis chiffré et fixe, avant tout démarrage.</p></details>
+    <details><summary>En combien de temps mon site est-il en ligne ?</summary><p>Chaque site et chaque prestation est livré en 1 semaine, de l'appel de cadrage à la mise en ligne. Le périmètre est fixé dès le départ pour tenir ce délai.</p></details>
+    <details><summary>Est-ce que je pourrai modifier mes textes moi-même ?</summary><p>Oui, si vous le souhaitez : on peut prévoir une interface simple pour modifier textes et images sans toucher au code.</p></details>
+    <details><summary>Et après la livraison ?</summary><p>Vous êtes propriétaire du site. On peut assurer l'hébergement, les mises à jour et les évolutions, ou simplement vous laisser autonome.</p></details>
+    <details><summary>Vous travaillez avec des sociétés hors d'Annecy ?</summary><p>Oui. Tout se fait à distance par visio et messagerie, partout en France et en Europe.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Swelly.pro · Studio web à Annecy</span>
+    <span class="mono">Fait main, vague après vague</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Swell canvas: layered sine lines with pointer parallax */
+  var cv=document.getElementById('swell'),ctx=cv.getContext('2d');
+  var W=0,H=0,dpr=1,mx=.5,my=.5,tx=.5,ty=.5;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){
+    var r=cv.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  window.addEventListener('resize',size);size();
+  window.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;});
+  var N=26;
+  function draw(t){
+    mx+=(tx-mx)*.04;my+=(ty-my)*.04;
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<N;i++){
+      var p=i/(N-1);
+      var base=H*(.28+p*.62);
+      var amp=(14+p*46)*(1+(my-.5)*.6);
+      var ph=p*2.2+t*.00045;
+      ctx.beginPath();
+      for(var x=0;x<=W;x+=8){
+        var u=x/W;
+        var y=base
+          +Math.sin(u*5.2+ph+mx*2.4)*amp
+          +Math.sin(u*11+ph*1.7)*amp*.28
+          +Math.sin(u*2.1-ph*.8)*amp*.7;
+        if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+      }
+      var a=.05+p*.5;
+      ctx.strokeStyle=i%9===4?'rgba(233,201,139,'+(a*.9)+')':'rgba(45,226,196,'+a+')';
+      ctx.lineWidth=.6+p*1.2;
+      ctx.stroke();
+    }
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  /* Lead form: opens the visitor's mail app with the request pre-filled */
+  var f=document.getElementById('lead'),note=document.getElementById('note');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nom=f.nom.value.trim(),mail=f.mail.value.trim();
+    if(!nom||!/^\S+@\S+\.\S+$/.test(mail)){note.textContent='Indiquez votre nom et un email valide.';note.style.color='#E9C98B';return;}
+    var body='Nom : '+nom+'\nEmail : '+mail+'\nBesoin : '+f.type.value+'\nDélai : '+f.delai.value+'\n\n'+f.msg.value;
+    window.location.href='mailto:contact@swelly.pro?subject='+encodeURIComponent('Demande de devis – '+nom)+'&body='+encodeURIComponent(body);
+    note.textContent='Votre messagerie s’ouvre avec la demande pré-remplie. Il ne reste qu’à l’envoyer.';note.style.color='#2DE2C4';
+  });
+})();
+</script>
+
+</body></html>
